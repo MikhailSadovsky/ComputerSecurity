@@ -43,6 +43,7 @@ public class UserController extends BaseController {
 			Model model) {
 		try {
 			user.setRole(0);
+			user.setPassword(passwordEncoder.encode(user.getPassword()));
 			userDAO.create(user);
 			return manageRequests(req, resp, model);
 		} catch (DAOException exception) {
@@ -66,6 +67,7 @@ public class UserController extends BaseController {
 			Model model) {
 		try {
 			user.setRole(0);
+			user.setPassword(passwordEncoder.encode(user.getPassword()));
 			userDAO.update(user);
 			return manageRequests(req, resp, model);
 		} catch (DAOException exception) {

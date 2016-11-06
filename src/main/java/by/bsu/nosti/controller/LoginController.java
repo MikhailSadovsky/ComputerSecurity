@@ -18,6 +18,7 @@ import by.bsu.nosti.exception.DAOException;
 
 @Controller
 public class LoginController extends BaseController {
+
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView getLogin() {
 		return new ModelAndView("login", "user", new User());
@@ -33,9 +34,9 @@ public class LoginController extends BaseController {
 	public String processLogin(@ModelAttribute("user") User user, BindingResult result, HttpServletRequest req,
 			HttpServletResponse resp, Model model) {
 		try {
-			User userDb = userDAO.getUser(user.getLogin(), user.getPassword());
-			if (userDb == null) {
-				result.rejectValue("email", "registration.email.wrongPattern", "Login or password is incorrect!");
+			User userDb = userDAO.getUser(user.getLogin());
+			if (userDb == null || !passwordEncoder.matches(user.getPassword(), userDb.getPassword())) {
+				result.rejectValue("password", "wrongPassword", "Login or password is incorrect!");
 			}
 			if (result.hasErrors()) {
 				return "login";
@@ -68,7 +69,7 @@ public class LoginController extends BaseController {
 			User user = new User();
 			user.setEmail(person.getEmail());
 			user.setLogin(person.getLogin());
-			user.setPassword(person.getPassword());
+			user.setPassword(passwordEncoder.encode(person.getPassword()));
 			user.setRole(UserRole.User.ordinal());
 			userDAO.create(user);
 			model.addAttribute("currentuser", user.getLogin());

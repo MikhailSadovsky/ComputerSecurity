@@ -32,8 +32,9 @@ CREATE TABLE IF NOT EXISTS USER_RESOURCE_PERMISSIONS (
 		 FOREIGN KEY (RESOURCE_ID) REFERENCES RESOURCE(ID) ON DELETE CASCADE
 );
        
-INSERT INTO USER (LOGIN, EMAIL, PASSWORD, ROLE) VALUES ('nosti_admin', 'nosti@mail.ru', 'nosti', 1);
-INSERT INTO USER (LOGIN, EMAIL, PASSWORD, ROLE) VALUES ('sample_user', 'sample_user@mail.ru', 'sample_user', 0);
+/* password for nosti_admin is nosti, for sample_user is sample_user */
+INSERT INTO USER (LOGIN, EMAIL, PASSWORD, ROLE) VALUES ('nosti_admin', 'nosti@mail.ru', '$2a$10$Q3qzVQNgUBWO1VTgT0YW7u/RWoWCznnLOv9.eEE9YraqTW9O8QOHy', 1);
+INSERT INTO USER (LOGIN, EMAIL, PASSWORD, ROLE) VALUES ('sample_user', 'sample_user@mail.ru', '$2a$10$McGXjrn...KK0wHwEKM4cOiKmeVVclWC7meAySB6pcXtEL3lDh0TG', 0);
 INSERT INTO PERMISSION (BIT, NAME) VALUES
          (2, 'Edit'),
          (4, 'Delete'),
