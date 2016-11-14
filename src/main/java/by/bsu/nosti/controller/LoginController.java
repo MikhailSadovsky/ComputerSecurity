@@ -44,16 +44,6 @@ public class LoginController extends BaseController {
 				model.addAttribute("username", userDb.getLogin());
 				return "login";
 			}
-			// addCookie(userDb.getLogin(), resp);
-			/*
-			 * model.addAttribute("currentuser", userDb.getLogin()); if (userDb
-			 * != null && userDb.getRole() == UserRole.Admin.ordinal()) {
-			 * model.addAttribute("userResourceLinks",
-			 * userResourceLinkDAO.retrieveAll()); return "admin"; }
-			 * model.addAttribute("userResourceLinks",
-			 * userResourceLinkDAO.getUserResourceLinkByUserId(userDb.getUserId(
-			 * ))); return "index";
-			 */
 		} catch (DAOException exception) {
 			return "error";
 		}
