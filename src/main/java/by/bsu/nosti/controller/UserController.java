@@ -24,6 +24,7 @@ public class UserController extends BaseController {
 			model.addAttribute("users", userDAO.retrieveAll());
 			return "users";
 		} catch (DAOException exception) {
+			model.addAttribute("message", exception.getMessage());
 			return "error";
 		}
 	}
@@ -47,6 +48,7 @@ public class UserController extends BaseController {
 			userDAO.create(user);
 			return manageRequests(req, resp, model);
 		} catch (DAOException exception) {
+			model.addAttribute("message", exception.getMessage());
 			return "error";
 		}
 	}
@@ -71,6 +73,7 @@ public class UserController extends BaseController {
 			userDAO.update(user);
 			return manageRequests(req, resp, model);
 		} catch (DAOException exception) {
+			model.addAttribute("message", exception.getMessage());
 			return "error";
 		}
 	}
@@ -82,6 +85,7 @@ public class UserController extends BaseController {
 			userDAO.delete(id);
 			return manageRequests(req, resp, model);
 		} catch (DAOException exception) {
+			model.addAttribute("message", exception.getMessage());
 			return "error";
 		}
 	}

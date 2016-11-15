@@ -45,6 +45,7 @@ public class HomeController extends BaseController {
 			userResourceLinkDAO.create(link);
 			return manageRequests(req, resp, model);
 		} catch (DAOException exception) {
+			model.addAttribute("message", exception.getMessage());
 			return "error";
 		}
 	}
@@ -69,6 +70,7 @@ public class HomeController extends BaseController {
 			userResourceLinkDAO.update(link);
 			return manageRequests(req, resp, model);
 		} catch (DAOException exception) {
+			model.addAttribute("message", exception.getMessage());
 			return "error";
 		}
 	}
@@ -80,6 +82,7 @@ public class HomeController extends BaseController {
 			userResourceLinkDAO.delete(id);
 			return manageRequests(req, resp, model);
 		} catch (DAOException exception) {
+			model.addAttribute("message", exception.getMessage());
 			return "error";
 		}
 	}

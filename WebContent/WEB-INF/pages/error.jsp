@@ -16,7 +16,7 @@
 <body>
 <div class="container body-content">
     <h1>An Error has occured...</h1>
-    ${message}
+    <h2>${message}</h2>
 </div>
 
 

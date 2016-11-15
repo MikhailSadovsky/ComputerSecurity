@@ -45,6 +45,7 @@ public class LoginController extends BaseController {
 				return "login";
 			}
 		} catch (DAOException exception) {
+			model.addAttribute("message", exception.getMessage());
 			return "error";
 		}
 	}
@@ -73,6 +74,7 @@ public class LoginController extends BaseController {
 			model.addAttribute("userResourceLinks", userResourceLinkDAO.getUserResourceLinkByUserId(user.getUserId()));
 			return "index";
 		} catch (DAOException exception) {
+			model.addAttribute("message", exception.getMessage());
 			return "error";
 		}
 	}

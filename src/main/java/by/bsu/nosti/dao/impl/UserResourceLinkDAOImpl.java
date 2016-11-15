@@ -57,7 +57,7 @@ public class UserResourceLinkDAOImpl implements UserResourceLinkDAO {
 			ps.setInt(3, link.getPermission());
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			throw new DAOException("Error while insert new user resource link.", e);
+			throw new DAOException("Error while insert new user resource link. " + e.getMessage(), e);
 		}
 	}
 
@@ -101,7 +101,7 @@ public class UserResourceLinkDAOImpl implements UserResourceLinkDAO {
 				}
 			}
 		} catch (SQLException e) {
-			throw new DAOException("Error while retrieve link from db.", e);
+			throw new DAOException("Error while retrieve link from db. " + e.getMessage(), e);
 		}
 		return linksMap.get(linkIdtoGet);
 	}
@@ -144,7 +144,7 @@ public class UserResourceLinkDAOImpl implements UserResourceLinkDAO {
 				}
 			}
 		} catch (SQLException e) {
-			throw new DAOException("Error while retrive list of links from db.", e);
+			throw new DAOException("Error while retrive list of links from db. " + e.getMessage(), e);
 		}
 
 		return new ArrayList<UserResourceLink>(linksMap.values());
@@ -190,7 +190,7 @@ public class UserResourceLinkDAOImpl implements UserResourceLinkDAO {
 				}
 			}
 		} catch (SQLException e) {
-			throw new DAOException("Error while retrieve link from db.", e);
+			throw new DAOException("Error while retrieve link from db. " + e.getMessage(), e);
 		}
 		return new ArrayList<UserResourceLink>(linksMap.values());
 	}
@@ -205,7 +205,7 @@ public class UserResourceLinkDAOImpl implements UserResourceLinkDAO {
 			ps.setInt(4, link.getUserResourceLinkId());
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			throw new DAOException("Error while update link.", e);
+			throw new DAOException("Error while update link." + e.getMessage(), e);
 		}
 	}
 
@@ -216,7 +216,7 @@ public class UserResourceLinkDAOImpl implements UserResourceLinkDAO {
 			ps.setInt(1, linkId);
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			throw new DAOException("Error while delete link.", e);
+			throw new DAOException("Error while delete link." + e.getMessage(), e);
 		}
 	}
 

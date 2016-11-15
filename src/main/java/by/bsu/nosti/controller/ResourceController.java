@@ -55,6 +55,7 @@ public class ResourceController extends BaseController {
 			resourceDAO.create(resource);
 			return manageRequests(req, resp, model);
 		} catch (DAOException exception) {
+			model.addAttribute("message", exception.getMessage());
 			return "error";
 		}
 	}
@@ -77,6 +78,7 @@ public class ResourceController extends BaseController {
 			resourceDAO.update(resource);
 			return manageRequests(req, resp, model);
 		} catch (DAOException exception) {
+			model.addAttribute("message", exception.getMessage());
 			return "error";
 		}
 	}
@@ -88,6 +90,7 @@ public class ResourceController extends BaseController {
 			resourceDAO.delete(id);
 			return manageRequests(req, resp, model);
 		} catch (DAOException exception) {
+			model.addAttribute("message", exception.getMessage());
 			return "error";
 		}
 	}

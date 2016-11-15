@@ -46,7 +46,7 @@ public class UserDAOImpl implements UserDAO {
 			ps.setInt(4, user.getRole());
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			throw new DAOException("Error while insert new user.", e);
+			throw new DAOException("Error while insert new user. " + e.getMessage(), e);
 		}
 	}
 
@@ -67,7 +67,7 @@ public class UserDAOImpl implements UserDAO {
 				}
 			}
 		} catch (SQLException e) {
-			throw new DAOException("Error while retrieve user from db.", e);
+			throw new DAOException("Error while retrieve user from db. " + e.getMessage(), e);
 		}
 		return user;
 	}
@@ -92,7 +92,7 @@ public class UserDAOImpl implements UserDAO {
 				}
 			}
 		} catch (SQLException e) {
-			throw new DAOException("Error while retrive list of users from db.", e);
+			throw new DAOException("Error while retrive list of users from db. " + e.getMessage(), e);
 		}
 
 		return users;
@@ -109,7 +109,7 @@ public class UserDAOImpl implements UserDAO {
 			ps.setInt(5, user.getUserId());
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			throw new DAOException("Error while update user.", e);
+			throw new DAOException("Error while update user. " + e.getMessage(), e);
 		}
 	}
 
@@ -120,7 +120,7 @@ public class UserDAOImpl implements UserDAO {
 			ps.setInt(1, userId);
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			throw new DAOException("Error while delete user.", e);
+			throw new DAOException("Error while delete user. " + e.getMessage(), e);
 		}
 	}
 
@@ -141,7 +141,7 @@ public class UserDAOImpl implements UserDAO {
 				}
 			}
 		} catch (SQLException e) {
-			throw new DAOException("Error while retrieve user from db.", e);
+			throw new DAOException("Error while retrieve user from db. " + e.getMessage(), e);
 		}
 		return user;
 	}
@@ -163,7 +163,7 @@ public class UserDAOImpl implements UserDAO {
 				}
 			}
 		} catch (SQLException e) {
-			throw new DAOException("Error while retrieve user from db.", e);
+			throw new DAOException("Error while retrieve user from db. " + e.getMessage(), e);
 		}
 		return user;
 	}

@@ -39,7 +39,7 @@ public class ResourceDAOImpl implements ResourceDAO {
 			ps.setString(2, resource.getInfo());
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			throw new DAOException("Error while insert new resource.", e);
+			throw new DAOException("Error while insert new resource. " + e.getMessage(), e);
 		}
 	}
 
@@ -58,7 +58,7 @@ public class ResourceDAOImpl implements ResourceDAO {
 				}
 			}
 		} catch (SQLException e) {
-			throw new DAOException("Error while retrieve user from db.", e);
+			throw new DAOException("Error while retrieve resource from db. " + e.getMessage(), e);
 		}
 		return resource;
 	}
@@ -79,7 +79,7 @@ public class ResourceDAOImpl implements ResourceDAO {
 				resources.add(resource);
 			}
 		} catch (SQLException e) {
-			throw new DAOException("Error while retrive list of users from db.", e);
+			throw new DAOException("Error while retrive list of resources from db. " + e.getMessage(), e);
 		}
 
 		return resources;
@@ -94,7 +94,7 @@ public class ResourceDAOImpl implements ResourceDAO {
 			ps.setInt(3, resource.getResourceId());
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			throw new DAOException("Error while update user.", e);
+			throw new DAOException("Error while update resource. " + e.getMessage(), e);
 		}
 	}
 
@@ -105,7 +105,7 @@ public class ResourceDAOImpl implements ResourceDAO {
 			ps.setInt(1, resourceId);
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			throw new DAOException("Error while delete resources.", e);
+			throw new DAOException("Error while delete resources. " + e.getMessage(), e);
 		}
 	}
 
@@ -127,7 +127,7 @@ public class ResourceDAOImpl implements ResourceDAO {
 				}
 			}
 		} catch (SQLException e) {
-			throw new DAOException("Error while retrieve user from db.", e);
+			throw new DAOException("Error while retrieve resource from db. " + e.getMessage(), e);
 		}
 		return resources;
 	}
